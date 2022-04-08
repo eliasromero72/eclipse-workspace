@@ -1,0 +1,13 @@
+package aplicacao;
+
+import dominio.Pessoa;
+
+public class Programa {
+
+	public static void main(String[] args) {
+
+		
+
+	}
+
+}
