@@ -32,13 +32,13 @@
 			<version>8.0.28</version>
 		</dependency>
 
-		<!-- Thiago -->
+		<!-- oracle -->
 		<dependency>
 			<groupId>com.oracle.database.jdbc</groupId>
 			<artifactId>ojdbc8</artifactId>
 			<version>21.1.0.0</version>
 		</dependency>
-		<!-- Fim Thiago -->
+		<!-- Fim oracle -->
 
 		<!-- https://mvnrepository.com/artifact/com.oracle/ojdbc14 -->
 		<!-- <dependency>

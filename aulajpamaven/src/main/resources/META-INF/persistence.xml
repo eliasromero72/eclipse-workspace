@@ -6,16 +6,16 @@
 
 		<properties>
 
-			<!-- mysql 
+			<!-- mysql -->
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/aulajpa?useSSL=false&amp;serverTimezone=UTC" />
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
 			<property name="javax.persistence.jdbc.user" value="root" />
 			<property name="javax.persistence.jdbc.password" value="" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect" />
-			 Fim -->
+			<!-- Fim -->
 
-			<!-- oracle --> 
+			<!-- oracle 
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
@@ -24,7 +24,7 @@
 			<property name="javax.persistence.jdbc.user" value="PF1580" />
 			<property name="javax.persistence.jdbc.password" value="hhg45" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@oracle.fiap.com.br:1521:orcl" />
-			<!-- Fim -->
+			Fim -->
 
 		</properties>
 
