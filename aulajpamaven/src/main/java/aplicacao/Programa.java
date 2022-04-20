@@ -20,22 +20,6 @@ public class Programa {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("exemplo-jpa");
 		EntityManager em = emf.createEntityManager();
 		
-		
-		// parte III
-		//Pessoa p = new Pessoa(2, null, null); // não consegue remover pq a entidade não está monitorada!
-		Pessoa p = em.find(Pessoa.class, 2); // não excluiu ainda: falta uma transação...		
-		
-		em.getTransaction().begin();
-		em.remove(p);
-		em.getTransaction().commit();	
-		
-		
-		/*
-		// parte II
-		Pessoa p = em.find(Pessoa.class, 2);
-		System.out.println(p);
-		*/
-
 		/*
 		// parte I
 		em.getTransaction().begin(); // há a necessidade de se fazer uma transação ao inserir algo no bd
@@ -44,6 +28,21 @@ public class Programa {
 		em.persist(p3);
 		em.getTransaction().commit();
 		*/
+		
+		/*
+		// parte II
+		Pessoa p = em.find(Pessoa.class, 2);
+		System.out.println(p);
+		*/
+		
+		// parte III
+		//Pessoa p = new Pessoa(2, null, null); // não consegue remover pq a entidade não está monitorada!
+		Pessoa p = em.find(Pessoa.class, 2); // não excluiu ainda: falta uma transação...		
+		
+		em.getTransaction().begin();
+		em.remove(p);
+		em.getTransaction().commit();	
+
 
 		System.out.println("pronto!");
 		em.close(); // fechando...
