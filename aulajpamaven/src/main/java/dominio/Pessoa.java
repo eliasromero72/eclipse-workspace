@@ -2,6 +2,7 @@ package dominio;
 
 import java.io.Serializable;
 
+//import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,6 +15,8 @@ public class Pessoa implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
+	//@Column (name = "nomecompleto") // caso eu queria mudar o nome da columa na tabela
 	private String nome;
 	private String email;
 
