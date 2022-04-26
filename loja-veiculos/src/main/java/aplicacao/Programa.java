@@ -15,6 +15,7 @@ public class Programa {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("loja-veiculos");
 		EntityManager em = emf.createEntityManager();
 
+		///*
 		em.getTransaction().begin(); // há a necessidade de se fazer uma transação ao inserir algo no bd
 
 		Veiculo veiculo1 = new Veiculo();
@@ -28,6 +29,7 @@ public class Programa {
 		em.persist(veiculo1);
 
 		em.getTransaction().commit();
+		//*/
 
 		System.out.println("pronto!");
 		em.close(); // fechando...
