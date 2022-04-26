@@ -4,4 +4,19 @@
 		<item key="DIALOG_X_ORIGIN" value="375"/>
 		<item key="DIALOG_Y_ORIGIN" value="181"/>
 	</section>
+	<section name="SmartImportWizard">
+		<item key="SmartImportRootWizardPage.STORE_HIDE_ALREADY_OPEN" value="false"/>
+		<item key="SmartImportRootWizardPage.STORE_CLOSE_IMPORTED" value="false"/>
+		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
+		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
+		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\romer\Downloads\2TDSF\RM88804_L58_M12_115712_Desktop\Checkpoint"/>
+			<item value="C:\Users\romer\Downloads\2TDSF\RM88392_L58_M18_114935_CP1\CP1"/>
+			<item value="C:\Users\romer\Downloads\2TDSF\RM88221_L58_M04_115647_rm88221\jhow-cadastrarProduto"/>
+			<item value="C:\Users\romer\Downloads\2TDSF\RM88206_L58_M22_115057_Checkpoint1\CheckpointOne"/>
+			<item value="C:\Users\romer\Downloads\2TDSF\RM88066_L58_M27_115218_Check1_Enterprise\Check1_Enterprise\04-jpa-introducao"/>
+			<item value="C:\Users\romer\Downloads\2TDSF\RM87203_L58_M17_113645_2TDSF-EnzoBP-GustavoLC-CP1\2TDSF-EnzoBP-GustavoLC-CP1\Programa-2TDSF-EnzoBP-GustavoLC-CP1"/>
+			<item value="C:\Users\romer\Downloads\2TDSF\RM87077_L58_M26_115105_CP-JAVA\CP JAVA\CP JAVA"/>
+		</list>
+	</section>
 </section>
