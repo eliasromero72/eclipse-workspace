@@ -1,6 +1,7 @@
 package dominio;
 
 import java.io.Serializable;
+import javax.persistence.EmbeddedId;
 
 //import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,11 +13,14 @@ import javax.persistence.Id;
 public class Pessoa implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	@EmbeddedId
+	private PessoaId id;
 	
-	//@Column (name = "nomecompleto") // caso eu queria mudar o nome da columa na tabela
+	//@Id
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//private Integer id;
+	
+	//@Column (name = "nome_completo") // caso eu queria mudar o nome da columa na tabela
 	private String nome;
 	private String email;
 
@@ -24,6 +28,7 @@ public class Pessoa implements Serializable {
 
 	}
 
+	/*
 	public Pessoa(Integer id, String nome, String email) {
 		super();
 		this.id = id;
@@ -38,6 +43,24 @@ public class Pessoa implements Serializable {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	*/
+	
+	// novos 
+	public Pessoa(PessoaId id, String nome, String email) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.email = email;
+	}
+
+	public PessoaId getId() {
+		return id;
+	}
+
+	public void setId(PessoaId id) {
+		this.id = id;
+	}	
+	//---
 
 	public String getNome() {
 		return nome;
