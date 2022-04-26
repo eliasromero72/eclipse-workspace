@@ -17,15 +17,15 @@ public class Programa {
 
 		em.getTransaction().begin(); // há a necessidade de se fazer uma transação ao inserir algo no bd
 
-		Veiculo veiculo = new Veiculo();
+		Veiculo veiculo1 = new Veiculo();
 		
-		veiculo.setFabricante("Honda");
-		veiculo.setModelo("Civic");
-		veiculo.setAnoFabricacao(2020);
-		veiculo.setAnoModelo(2020);
-		veiculo.setValor(new BigDecimal(90500));
+		veiculo1.setFabricante("Honda");
+		veiculo1.setModelo("Civic");
+		veiculo1.setAnoFabricacao(2020);
+		veiculo1.setAnoModelo(2020);
+		veiculo1.setValor(new BigDecimal(90500));
 		
-		em.persist(veiculo);
+		em.persist(veiculo1);
 
 		em.getTransaction().commit();
 
