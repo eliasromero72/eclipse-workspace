@@ -15,7 +15,7 @@
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect" />
 			<!-- Fim -->
 
-			<!-- oracle 
+			<!-- oracle  
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
@@ -24,7 +24,7 @@
 			<property name="javax.persistence.jdbc.user" value="PF1580" />
 			<property name="javax.persistence.jdbc.password" value="hhg45" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@oracle.fiap.com.br:1521:orcl" />
-			Fim -->
+			 Fim -->
 
 		</properties>
 

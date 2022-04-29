@@ -17,7 +17,7 @@ public class BuscandoVeiculo2 {
 
 		//em.getTransaction().begin(); // há a necessidade de se fazer uma transação ao inserir algo no bd
 
-		Veiculo veiculo = em.getReference(Veiculo.class, 2L);
+		Veiculo veiculo = em.getReference(Veiculo.class, 1L);
 		System.out.println("Veículo de código " + veiculo.getCodigo()
 		+ " é um " + veiculo.getModelo());
 

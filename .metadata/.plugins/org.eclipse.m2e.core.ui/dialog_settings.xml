@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="MavenProjectWizardLocationPage">
 		<list key="location">
+			<item value="C:\Users\romer\eclipse-workspace\aulajpamaven\src\main\java\dominio\Pessoa.java"/>
 			<item value="C:\Users\romer\eclipse-workspace\AulaJpa2\src\aplicacao\Programa.java"/>
 			<item value="C:\Users\romer\eclipse-workspace\AulaJpa\src\aplicacao\Programa.java"/>
 			<item value="C:\Users\romer\eclipse-workspace\Teste"/>
@@ -53,6 +54,9 @@
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="loja-veiculos3"/>
+			<item value="loja-veiculos2"/>
+			<item value="loja-veiculos"/>
 			<item value="aulajpamaven3"/>
 			<item value="aulajpamaven2"/>
 			<item value="aulajpamaven"/>

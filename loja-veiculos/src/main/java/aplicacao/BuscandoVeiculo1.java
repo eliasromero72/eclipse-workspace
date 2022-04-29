@@ -1,7 +1,5 @@
 package aplicacao;
 
-import java.math.BigDecimal;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -17,7 +15,7 @@ public class BuscandoVeiculo1 {
 
 		//em.getTransaction().begin(); // há a necessidade de se fazer uma transação ao inserir algo no bd
 
-		Veiculo veiculo = em.find(Veiculo.class, 1L);
+		Veiculo veiculo = em.find(Veiculo.class, 2L);
 		System.out.println("Veículo de código " + veiculo.getCodigo()
 		+ " é um " + veiculo.getModelo());
 

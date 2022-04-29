@@ -2,4 +2,5 @@
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="java.io.Serializable"/>
     <fullyQualifiedTypeName name="dominio.Pessoa"/>
+    <fullyQualifiedTypeName name="dominio.Veiculo"/>
 </qualifiedTypeNameHistroy>
