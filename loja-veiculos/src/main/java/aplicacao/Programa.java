@@ -22,7 +22,7 @@ public class Programa {
 		///*
 		em.getTransaction().begin(); // há a necessidade de se fazer uma transação ao inserir algo no bd		
 		
-		/*
+		///*
 		// parte i - Chaves compostas
 		Veiculo veiculo = new Veiculo();
 		veiculo.setCodigo(new VeiculoId("ABC-1234", "Uberlândia"));
@@ -32,7 +32,7 @@ public class Programa {
 		veiculo.setAnoModelo(2020);
 		veiculo.setValor(new BigDecimal(71_300));		
 		em.persist(veiculo);
-		*/
+		//*/
 		
 		/*
 		// parte ii - Usando Enum
