@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.Objects;
 
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -16,17 +17,20 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "tab_veiculo")
 public class Veiculo {
 	
-	//@EmbeddedId	
-	//private VeiculoId codigo;
+	@EmbeddedId	
+	private VeiculoId codigo;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long codigo;
+	//@Id
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//private Long codigo;
 	
 	@Column(length = 60, nullable = false)
 	private String fabricante;
@@ -43,26 +47,30 @@ public class Veiculo {
 	@Column(precision = 10, scale = 2, nullable = true)
 	private BigDecimal valor;
 	
-	@Column(name = "tipo_combustivel", nullable = false)
-	@Enumerated(EnumType.STRING)
-	private TipoCombustivel tipoCombustivel;
+	//@Column(name = "tipo_combustivel", nullable = false)
+	//@Enumerated(EnumType.STRING) // EnumType.ORDINAL (insere número ao invés da string)
+	//private TipoCombustivel tipoCombustivel;
 	
 	//@Temporal(TemporalType.DATE)
-	@Column(name = "data_cadastro", nullable = false)
-	private LocalDate dataCadastro;
+	//@Column(name = "data_cadastro", nullable = false)
+	//private LocalDate dataCadastro;
 	
+	/*
 	@Lob
 	private String especificacoes;
 	
 	@Lob
 	private byte[] foto;
+	*/
 	
 	//@Embedded
 	//private Proprietario proprietario;
 	
+	/*
 	@OneToOne(optional = false)
 	@JoinColumn(name = "cod_proprietario")
 	private Proprietario proprietario;
+	*/
 
 	/*
 	As propriedades de uma entidade são automaticamente mapeadas se não especificarmos nenhuma anotação.
@@ -75,9 +83,8 @@ public class Veiculo {
 	public Veiculo() {
 	}
 
-	public Veiculo(Long codigo, String fabricante, String modelo, Integer anoFabricacao, Integer anoModelo,
-			BigDecimal valor, TipoCombustivel tipoCombustivel, LocalDate dataCadastro, String especificacoes,
-			byte[] foto, Proprietario proprietario) {
+	public Veiculo(VeiculoId codigo, String fabricante, String modelo, Integer anoFabricacao, Integer anoModelo,
+			BigDecimal valor) {
 		super();
 		this.codigo = codigo;
 		this.fabricante = fabricante;
@@ -85,18 +92,13 @@ public class Veiculo {
 		this.anoFabricacao = anoFabricacao;
 		this.anoModelo = anoModelo;
 		this.valor = valor;
-		this.tipoCombustivel = tipoCombustivel;
-		this.dataCadastro = dataCadastro;
-		this.especificacoes = especificacoes;
-		this.foto = foto;
-		this.proprietario = proprietario;
 	}
 
-	public Long getCodigo() {
+	public VeiculoId getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(Long codigo) {
+	public void setCodigo(VeiculoId codigo) {
 		this.codigo = codigo;
 	}
 
@@ -140,54 +142,9 @@ public class Veiculo {
 		this.valor = valor;
 	}
 
-	public TipoCombustivel getTipoCombustivel() {
-		return tipoCombustivel;
-	}
-
-	public void setTipoCombustivel(TipoCombustivel tipoCombustivel) {
-		this.tipoCombustivel = tipoCombustivel;
-	}
-
-	public LocalDate getDataCadastro() {
-		return dataCadastro;
-	}
-
-	public void setDataCadastro(LocalDate dataCadastro) {
-		this.dataCadastro = dataCadastro;
-	}
-
-	public String getEspecificacoes() {
-		return especificacoes;
-	}
-
-	public void setEspecificacoes(String especificacoes) {
-		this.especificacoes = especificacoes;
-	}
-
-	public byte[] getFoto() {
-		return foto;
-	}
-
-	public void setFoto(byte[] foto) {
-		this.foto = foto;
-	}
-
-	public Proprietario getProprietario() {
-		return proprietario;
-	}
-
-	public void setProprietario(Proprietario proprietario) {
-		this.proprietario = proprietario;
-	}
-
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + Arrays.hashCode(foto);
-		result = prime * result + Objects.hash(anoFabricacao, anoModelo, codigo, dataCadastro, especificacoes,
-				fabricante, modelo, proprietario, tipoCombustivel, valor);
-		return result;
+		return Objects.hash(anoFabricacao, anoModelo, codigo, fabricante, modelo, valor);
 	}
 
 	@Override
@@ -200,11 +157,8 @@ public class Veiculo {
 			return false;
 		Veiculo other = (Veiculo) obj;
 		return Objects.equals(anoFabricacao, other.anoFabricacao) && Objects.equals(anoModelo, other.anoModelo)
-				&& Objects.equals(codigo, other.codigo) && Objects.equals(dataCadastro, other.dataCadastro)
-				&& Objects.equals(especificacoes, other.especificacoes) && Objects.equals(fabricante, other.fabricante)
-				&& Arrays.equals(foto, other.foto) && Objects.equals(modelo, other.modelo)
-				&& Objects.equals(proprietario, other.proprietario) && tipoCombustivel == other.tipoCombustivel
-				&& Objects.equals(valor, other.valor);
+				&& Objects.equals(codigo, other.codigo) && Objects.equals(fabricante, other.fabricante)
+				&& Objects.equals(modelo, other.modelo) && Objects.equals(valor, other.valor);
 	}
 	
 }

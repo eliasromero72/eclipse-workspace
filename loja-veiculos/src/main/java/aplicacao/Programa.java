@@ -7,9 +7,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import dominio.Proprietario;
+//import dominio.Proprietario;
 import dominio.TipoCombustivel;
 import dominio.Veiculo;
+import dominio.VeiculoId;
 
 public class Programa {
 
@@ -83,7 +84,7 @@ public class Programa {
 		em.persist(veiculo);
 		*/
 		
-		
+		/*
 		// parte v - 
 		Proprietario proprietario = new Proprietario();
 		proprietario.setNome("João das Couves");
@@ -102,7 +103,7 @@ public class Programa {
 		veiculo.setDataCadastro(LocalDate.now());
 		veiculo.setProprietario(proprietario);
 		em.persist(veiculo);
-		
+		*/
 			
 		em.getTransaction().commit();
 		//*/
