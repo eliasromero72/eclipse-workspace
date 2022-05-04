@@ -3,8 +3,8 @@ package aplicacao;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-
 import javax.persistence.Query;
+
 import java.util.List;
 
 import dominio.Veiculo;
@@ -19,6 +19,7 @@ public class ListandoVeiculos {
 		// em.getTransaction().begin(); // há a necessidade de se fazer uma transação ao inserir algo no bd
 
 		Query query = em.createQuery("select v from Veiculo v");
+		
 		List<Veiculo> veiculos = query.getResultList();
 		for (Veiculo veiculo : veiculos) {
 			System.out.println(veiculo.getCodigo() + " - " 

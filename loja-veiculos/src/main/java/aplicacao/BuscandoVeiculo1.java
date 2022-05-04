@@ -24,6 +24,7 @@ public class BuscandoVeiculo1 {
 		System.out.println("pronto!");
 		em.close(); // fechando...
 		emf.close();
+		
 
 	}
 

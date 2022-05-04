@@ -21,7 +21,6 @@ public class AtualizandoVeiculo {
 		em.getTransaction().begin(); // há a necessidade de se fazer uma transação ao inserir algo no bd
 
 		Veiculo veiculo = em.find(Veiculo.class, 1L);
-		em.remove(veiculo);
 		
 		System.out.println("Valor atual: " + veiculo.getValor());
 		veiculo.setValor(veiculo.getValor().add(new BigDecimal(500)));

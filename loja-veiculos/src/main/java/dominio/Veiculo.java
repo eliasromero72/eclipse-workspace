@@ -1,13 +1,20 @@
 package dominio;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -35,13 +42,42 @@ public class Veiculo {
 	
 	@Column(precision = 10, scale = 2, nullable = true)
 	private BigDecimal valor;
+	
+	@Column(name = "tipo_combustivel", nullable = false)
+	@Enumerated(EnumType.STRING)
+	private TipoCombustivel tipoCombustivel;
+	
+	//@Temporal(TemporalType.DATE)
+	@Column(name = "data_cadastro", nullable = false)
+	private LocalDate dataCadastro;
+	
+	@Lob
+	private String especificacoes;
+	
+	@Lob
+	private byte[] foto;
+	
+	//@Embedded
+	//private Proprietario proprietario;
+	
+	@OneToOne(optional = false)
+	@JoinColumn(name = "cod_proprietario")
+	private Proprietario proprietario;
 
+	/*
+	As propriedades de uma entidade são automaticamente mapeadas se não especificarmos nenhuma anotação.
+	Por diversas vezes, podemos precisar criar atributos que não representam uma coluna no banco de dados. Nestes casos, devemos anotar com @Transient.
+	A propriedade será ignorada totalmente pelo mecanismo de persistência.
+	*/
+	//@Transient
+	//private String descricaoCompleta;
+	
 	public Veiculo() {
-
 	}
 
 	public Veiculo(Long codigo, String fabricante, String modelo, Integer anoFabricacao, Integer anoModelo,
-			BigDecimal valor) {
+			BigDecimal valor, TipoCombustivel tipoCombustivel, LocalDate dataCadastro, String especificacoes,
+			byte[] foto, Proprietario proprietario) {
 		super();
 		this.codigo = codigo;
 		this.fabricante = fabricante;
@@ -49,6 +85,11 @@ public class Veiculo {
 		this.anoFabricacao = anoFabricacao;
 		this.anoModelo = anoModelo;
 		this.valor = valor;
+		this.tipoCombustivel = tipoCombustivel;
+		this.dataCadastro = dataCadastro;
+		this.especificacoes = especificacoes;
+		this.foto = foto;
+		this.proprietario = proprietario;
 	}
 
 	public Long getCodigo() {
@@ -99,9 +140,54 @@ public class Veiculo {
 		this.valor = valor;
 	}
 
+	public TipoCombustivel getTipoCombustivel() {
+		return tipoCombustivel;
+	}
+
+	public void setTipoCombustivel(TipoCombustivel tipoCombustivel) {
+		this.tipoCombustivel = tipoCombustivel;
+	}
+
+	public LocalDate getDataCadastro() {
+		return dataCadastro;
+	}
+
+	public void setDataCadastro(LocalDate dataCadastro) {
+		this.dataCadastro = dataCadastro;
+	}
+
+	public String getEspecificacoes() {
+		return especificacoes;
+	}
+
+	public void setEspecificacoes(String especificacoes) {
+		this.especificacoes = especificacoes;
+	}
+
+	public byte[] getFoto() {
+		return foto;
+	}
+
+	public void setFoto(byte[] foto) {
+		this.foto = foto;
+	}
+
+	public Proprietario getProprietario() {
+		return proprietario;
+	}
+
+	public void setProprietario(Proprietario proprietario) {
+		this.proprietario = proprietario;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(anoFabricacao, anoModelo, codigo, fabricante, modelo, valor);
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + Arrays.hashCode(foto);
+		result = prime * result + Objects.hash(anoFabricacao, anoModelo, codigo, dataCadastro, especificacoes,
+				fabricante, modelo, proprietario, tipoCombustivel, valor);
+		return result;
 	}
 
 	@Override
@@ -114,14 +200,11 @@ public class Veiculo {
 			return false;
 		Veiculo other = (Veiculo) obj;
 		return Objects.equals(anoFabricacao, other.anoFabricacao) && Objects.equals(anoModelo, other.anoModelo)
-				&& Objects.equals(codigo, other.codigo) && Objects.equals(fabricante, other.fabricante)
-				&& Objects.equals(modelo, other.modelo) && Objects.equals(valor, other.valor);
-	}
-
-	@Override
-	public String toString() {
-		return "Veiculo [codigo=" + codigo + ", fabricante=" + fabricante + ", modelo=" + modelo + ", anoFabricacao="
-				+ anoFabricacao + ", anoModelo=" + anoModelo + ", valor=" + valor + "]";
+				&& Objects.equals(codigo, other.codigo) && Objects.equals(dataCadastro, other.dataCadastro)
+				&& Objects.equals(especificacoes, other.especificacoes) && Objects.equals(fabricante, other.fabricante)
+				&& Arrays.equals(foto, other.foto) && Objects.equals(modelo, other.modelo)
+				&& Objects.equals(proprietario, other.proprietario) && tipoCombustivel == other.tipoCombustivel
+				&& Objects.equals(valor, other.valor);
 	}
 	
 }
