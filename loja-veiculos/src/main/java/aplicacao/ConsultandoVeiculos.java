@@ -14,7 +14,7 @@ public class ConsultandoVeiculos {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("loja-veiculos");
 		EntityManager em = emf.createEntityManager();
 
-		// em.getTransaction().begin(); // há a necessidade de se fazer uma transação ao inserir algo no bd
+		//em.getTransaction().begin(); // há a necessidade de se fazer uma transação ao inserir algo no bd
 		
 
 		// Quando consultamos veículos, o provedor JPA executa uma consulta do proprietário para cada veículo encontrado:
@@ -34,7 +34,7 @@ public class ConsultandoVeiculos {
 		System.out.println(proprietario.getVeiculo().getModelo() + " - " + proprietario.getNome());
 		
 		
-		// em.getTransaction().commit();
+		//em.getTransaction().commit();
 
 		System.out.println("pronto!");
 		em.close(); // fechando...

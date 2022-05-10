@@ -7,10 +7,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-//import dominio.Proprietario;
 import dominio.TipoCombustivel;
 import dominio.Veiculo;
-import dominio.VeiculoId;
 
 public class Programa {
 
@@ -22,7 +20,7 @@ public class Programa {
 		///*
 		em.getTransaction().begin(); // há a necessidade de se fazer uma transação ao inserir algo no bd		
 		
-		///*
+		/*
 		// parte i - Chaves compostas
 		Veiculo veiculo = new Veiculo();
 		veiculo.setCodigo(new VeiculoId("ABC-1234", "Uberlândia"));
@@ -32,7 +30,7 @@ public class Programa {
 		veiculo.setAnoModelo(2020);
 		veiculo.setValor(new BigDecimal(71_300));		
 		em.persist(veiculo);
-		//*/
+		*/
 		
 		/*
 		// parte ii - Usando Enum
@@ -43,6 +41,7 @@ public class Programa {
 		veiculo.setAnoModelo(2020);
 		veiculo.setValor(new BigDecimal(41_500));
 		veiculo.setTipoCombustivel(TipoCombustivel.BICOMBUSTIVEL);
+		veiculo.setDataCadastro(LocalDate.now());
 		em.persist(veiculo);
 		*/
 		
@@ -85,7 +84,7 @@ public class Programa {
 		*/
 		
 		/*
-		// parte v - 
+		// parte v - @OneToOne
 		Proprietario proprietario = new Proprietario();
 		proprietario.setNome("João das Couves");
 		proprietario.setTelefone("(34) 1234-5678");
@@ -103,7 +102,7 @@ public class Programa {
 		veiculo.setDataCadastro(LocalDate.now());
 		veiculo.setProprietario(proprietario);
 		em.persist(veiculo);
-		*/
+		//*/
 			
 		em.getTransaction().commit();
 		//*/

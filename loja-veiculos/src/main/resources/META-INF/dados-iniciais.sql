@@ -11,13 +11,13 @@ commit;
 
 insert into tab_veiculo (codigo, fabricante, modelo,
 ano_fabricacao, ano_modelo, valor, tipo_combustivel)
-values (1, 'Fiat', 'Toro', 2020, 2020, 107000, 'DIESEL');
+values (2, 'Fiat', 'Toro', 2020, 2020, 107000, 'DIESEL');
 insert into tab_veiculo (codigo, fabricante, modelo,
 ano_fabricacao, ano_modelo, valor, tipo_combustivel)
-values (2, 'Ford', 'Fiesta', 2019, 2019, 42000, 'GASOLINA');
+values (3, 'Ford', 'Fiesta', 2019, 2019, 42000, 'GASOLINA');
 insert into tab_veiculo (codigo, fabricante, modelo,
 ano_fabricacao, ano_modelo, valor, tipo_combustivel)
-values (3, 'VW', 'Gol', 2019, 2020, 35000, 'BICOMBUSTIVEL');
+values (4, 'VW', 'Gol', 2019, 2020, 35000, 'BICOMBUSTIVEL');
 commit;
 
 insert into tab_veiculo (codigo, fabricante, modelo,
@@ -33,6 +33,9 @@ ano_fabricacao, ano_modelo, valor, tipo_combustivel,
 data_cadastro) values (3, 'VW', 'Gol', 2019, 2020,
 35000, 'BICOMBUSTIVEL', sysdate());
 commit;
+
+sysdate() MySQL
+sysdate Oracle
 
 insert into proprietario (codigo, nome, telefone)
 values (1, 'Fernando Martins', '34 9 1111 1111');

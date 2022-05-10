@@ -2,7 +2,7 @@ package dominio;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -14,24 +14,22 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 
 @Entity
 @Table(name = "tab_veiculo")
 public class Veiculo {
 	
-	@EmbeddedId	
-	private VeiculoId codigo;
+	//@EmbeddedId	
+	//private VeiculoId codigo;
 
-	//@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
-	//private Long codigo;
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long codigo;
+
 	@Column(length = 60, nullable = false)
 	private String fabricante;
 	
@@ -47,13 +45,13 @@ public class Veiculo {
 	@Column(precision = 10, scale = 2, nullable = true)
 	private BigDecimal valor;
 	
-	//@Column(name = "tipo_combustivel", nullable = false)
-	//@Enumerated(EnumType.STRING) // EnumType.ORDINAL (insere número ao invés da string)
-	//private TipoCombustivel tipoCombustivel;
+	@Column(name = "tipo_combustivel", nullable = false)
+	@Enumerated(EnumType.STRING) // EnumType.ORDINAL (insere número ao invés da string)
+	private TipoCombustivel tipoCombustivel;
 	
-	//@Temporal(TemporalType.DATE)
-	//@Column(name = "data_cadastro", nullable = false)
-	//private LocalDate dataCadastro;
+	@Temporal(TemporalType.DATE) // Precisão de data, mas não está funcionando nesta IDE Eclipse
+	@Column(name = "data_cadastro", nullable = false)
+	private LocalDate dataCadastro;
 	
 	/*
 	@Lob
@@ -66,9 +64,16 @@ public class Veiculo {
 	//@Embedded
 	//private Proprietario proprietario;
 	
+	///*
+	// O relacionamento one-to-one aceita referências nulas, por padrão. Podemos obrigar a atribuição de proprietário durante a persistência de Veiculo, incluindo o atributo optional com valor false na anotação @OneToOne.
+	//@OneToOne(optional = false)
+	//@JoinColumn(name = "cod_proprietario")
+	//private Proprietario proprietario;
+	//*/
+	
 	/*
-	@OneToOne(optional = false)
-	@JoinColumn(name = "cod_proprietario")
+	@ManyToOne
+	@JoinColumn(name = "proprietario_codigo")
 	private Proprietario proprietario;
 	*/
 
@@ -83,8 +88,8 @@ public class Veiculo {
 	public Veiculo() {
 	}
 
-	public Veiculo(VeiculoId codigo, String fabricante, String modelo, Integer anoFabricacao, Integer anoModelo,
-			BigDecimal valor) {
+	public Veiculo(Long codigo, String fabricante, String modelo, Integer anoFabricacao, Integer anoModelo,
+			BigDecimal valor, TipoCombustivel tipoCombustivel, LocalDate dataCadastro) {
 		super();
 		this.codigo = codigo;
 		this.fabricante = fabricante;
@@ -92,13 +97,15 @@ public class Veiculo {
 		this.anoFabricacao = anoFabricacao;
 		this.anoModelo = anoModelo;
 		this.valor = valor;
+		this.tipoCombustivel = tipoCombustivel;
+		this.dataCadastro = dataCadastro;
 	}
 
-	public VeiculoId getCodigo() {
+	public Long getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(VeiculoId codigo) {
+	public void setCodigo(Long codigo) {
 		this.codigo = codigo;
 	}
 
@@ -142,9 +149,25 @@ public class Veiculo {
 		this.valor = valor;
 	}
 
+	public TipoCombustivel getTipoCombustivel() {
+		return tipoCombustivel;
+	}
+
+	public void setTipoCombustivel(TipoCombustivel tipoCombustivel) {
+		this.tipoCombustivel = tipoCombustivel;
+	}
+
+	public LocalDate getDataCadastro() {
+		return dataCadastro;
+	}
+
+	public void setDataCadastro(LocalDate dataCadastro) {
+		this.dataCadastro = dataCadastro;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(anoFabricacao, anoModelo, codigo, fabricante, modelo, valor);
+		return Objects.hash(anoFabricacao, anoModelo, codigo, dataCadastro, fabricante, modelo, tipoCombustivel, valor);
 	}
 
 	@Override
@@ -157,8 +180,9 @@ public class Veiculo {
 			return false;
 		Veiculo other = (Veiculo) obj;
 		return Objects.equals(anoFabricacao, other.anoFabricacao) && Objects.equals(anoModelo, other.anoModelo)
-				&& Objects.equals(codigo, other.codigo) && Objects.equals(fabricante, other.fabricante)
-				&& Objects.equals(modelo, other.modelo) && Objects.equals(valor, other.valor);
+				&& Objects.equals(codigo, other.codigo) && Objects.equals(dataCadastro, other.dataCadastro)
+				&& Objects.equals(fabricante, other.fabricante) && Objects.equals(modelo, other.modelo)
+				&& tipoCombustivel == other.tipoCombustivel && Objects.equals(valor, other.valor);
 	}
 	
 }

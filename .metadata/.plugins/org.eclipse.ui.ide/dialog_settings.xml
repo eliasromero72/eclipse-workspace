@@ -10,6 +10,8 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\romer\Downloads\checkpoint-01-jpa (1)"/>
+			<item value="C:\Users\romer\Downloads\checkpoint-01-jpa"/>
 			<item value="C:\Users\romer\eclipse-workspace\exemplo-equals-e-hashCode"/>
 			<item value="C:\Users\romer\Downloads\equals-e-hashCode-master\equals-e-hashCode-master\exemplo-equals-e-hashCode"/>
 			<item value="C:\Users\romer\Downloads\2TDSF\RM88804_L58_M12_115712_Desktop\Checkpoint"/>

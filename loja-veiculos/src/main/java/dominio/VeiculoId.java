@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import javax.persistence.Embeddable;
 
-@Embeddable
+@Embeddable // embutida
 public class VeiculoId implements Serializable {
 	private static final long serialVersionUID = 1L;
 

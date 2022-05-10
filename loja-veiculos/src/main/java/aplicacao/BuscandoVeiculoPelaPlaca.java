@@ -14,9 +14,9 @@ public class BuscandoVeiculoPelaPlaca {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("loja-veiculos");
 		EntityManager em = emf.createEntityManager();
 
-		//em.getTransaction().begin(); // há a necessidade de se fazer uma transação ao inserir algo no bd
+		//em.getTransaction().begin(); // há a necessidade de se fazer uma transação ao inserir, editar ou excluir algo no bd
 
-		VeiculoId codigo = new VeiculoId("ABC-1234", "Uberlândia");
+		VeiculoId codigo = new VeiculoId("AAA", "1111");
 		Veiculo veiculo = em.find(Veiculo.class, codigo);
 		System.out.println("Placa: " + veiculo.getCodigo().getPlaca());
 		System.out.println("Cidade: " + veiculo.getCodigo().getCidade());
