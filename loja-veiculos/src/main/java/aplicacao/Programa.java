@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import dominio.Proprietario;
 import dominio.TipoCombustivel;
 import dominio.Veiculo;
 
@@ -29,6 +30,7 @@ public class Programa {
 		veiculo.setAnoFabricacao(2020);
 		veiculo.setAnoModelo(2020);
 		veiculo.setValor(new BigDecimal(71_300));		
+		
 		em.persist(veiculo);
 		*/
 		
@@ -42,10 +44,11 @@ public class Programa {
 		veiculo.setValor(new BigDecimal(41_500));
 		veiculo.setTipoCombustivel(TipoCombustivel.BICOMBUSTIVEL);
 		veiculo.setDataCadastro(LocalDate.now());
+		
 		em.persist(veiculo);
 		*/
 		
-		/*
+		///*
 		// parte iii - Usado data e CLOB
 		StringBuilder especificacoes = new StringBuilder();
 		especificacoes.append("Carro em excelente estado.\n");
@@ -63,12 +66,13 @@ public class Programa {
 		veiculo.setTipoCombustivel(TipoCombustivel.BICOMBUSTIVEL);
 		veiculo.setDataCadastro(LocalDate.now());
 		veiculo.setEspecificacoes(especificacoes.toString());
+		
 		em.persist(veiculo);
-		*/// parte iii continua abaixo
+		//*/// parte iii continua abaixo
 
 		/*
 		// parte iv - Objetos embutidos
-		Proprietario proprietario = new Proprietario();
+		ProprietarioEmbedded proprietario = new ProprietarioEmbedded();
 		proprietario.setNome("João das Couves");
 		proprietario.setTelefone("(34) 1234-5678");
 		Veiculo veiculo = new Veiculo();
@@ -80,6 +84,7 @@ public class Programa {
 		veiculo.setTipoCombustivel(TipoCombustivel.BICOMBUSTIVEL);
 		veiculo.setDataCadastro(LocalDate.now());
 		veiculo.setProprietario(proprietario);
+		
 		em.persist(veiculo);
 		*/
 		
@@ -101,20 +106,21 @@ public class Programa {
 		veiculo.setTipoCombustivel(TipoCombustivel.BICOMBUSTIVEL);
 		veiculo.setDataCadastro(LocalDate.now());
 		veiculo.setProprietario(proprietario);
+		
 		em.persist(veiculo);
-		//*/
+		*/
 			
 		em.getTransaction().commit();
 		//*/
 				
-		/*
+		///*
 		// parte iii - Usado data e CLOB (continuação)
-		//em.detach(veiculo);
+		em.detach(veiculo);
 		Veiculo veiculo2 = em.find(Veiculo.class, veiculo.getCodigo());
 		System.out.println("Veículo: " + veiculo2.getModelo());
 		System.out.println("-------");
 		System.out.println(veiculo2.getEspecificacoes());
-		*/		
+		//*/		
 
 		System.out.println("pronto!");
 		em.close(); // fechando...

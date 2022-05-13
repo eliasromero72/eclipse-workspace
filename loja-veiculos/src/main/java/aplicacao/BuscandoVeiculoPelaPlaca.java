@@ -18,8 +18,8 @@ public class BuscandoVeiculoPelaPlaca {
 
 		VeiculoId codigo = new VeiculoId("AAA", "1111");
 		Veiculo veiculo = em.find(Veiculo.class, codigo);
-		System.out.println("Placa: " + veiculo.getCodigo().getPlaca());
-		System.out.println("Cidade: " + veiculo.getCodigo().getCidade());
+		//System.out.println("Placa: " + veiculo.getCodigo().getPlaca());
+		//System.out.println("Cidade: " + veiculo.getCodigo().getCidade());
 		System.out.println("Fabricante: " + veiculo.getFabricante());
 		System.out.println("Modelo: " + veiculo.getModelo());
 

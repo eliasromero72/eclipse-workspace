@@ -1,8 +1,9 @@
 package dominio;
 
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
 
-//@Embeddable
+@Embeddable
 
 public class ProprietarioEmbedded {
 
@@ -12,6 +13,18 @@ public class ProprietarioEmbedded {
 	private String telefone;
 	@Column(name = "email_proprietario")
 	private String email;
+	
+	public ProprietarioEmbedded() {
+		
+	}
+	
+	public ProprietarioEmbedded(String nome, String telefone, String email) {
+		super();
+		this.nome = nome;
+		this.telefone = telefone;
+		this.email = email;
+	}
+
 	public String getNome() {
 		return nome;
 	}

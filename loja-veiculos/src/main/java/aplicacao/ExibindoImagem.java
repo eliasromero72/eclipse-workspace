@@ -32,7 +32,7 @@ public class ExibindoImagem {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("loja-veiculos");
 		EntityManager em = emf.createEntityManager();
 
-		// /*
+		///*
 		em.getTransaction().begin(); // há a necessidade de se fazer uma transação ao inserir algo no bd
 
 		Veiculo veiculo = new Veiculo();
@@ -44,12 +44,13 @@ public class ExibindoImagem {
 		veiculo.setTipoCombustivel(TipoCombustivel.BICOMBUSTIVEL);
 		veiculo.setDataCadastro(LocalDate.now());
 		veiculo.setFoto(foto);
+		
 		em.persist(veiculo);
 
 		em.getTransaction().commit();
-		// */
+		//*/
 
-		//em.detach(veiculo);
+		em.detach(veiculo);
 		Veiculo veiculo2 = em.find(Veiculo.class, veiculo.getCodigo());
 		if (veiculo2.getFoto() != null) {
 			BufferedImage img = ImageIO.read(new ByteArrayInputStream(veiculo2.getFoto()));
