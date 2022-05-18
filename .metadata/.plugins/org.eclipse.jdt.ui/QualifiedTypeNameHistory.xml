@@ -32,8 +32,8 @@
     <fullyQualifiedTypeName name="dominio.VeiculoId"/>
     <fullyQualifiedTypeName name="javax.persistence.Temporal"/>
     <fullyQualifiedTypeName name="javax.persistence.TemporalType"/>
-    <fullyQualifiedTypeName name="javax.persistence.Transient"/>
     <fullyQualifiedTypeName name="javax.persistence.Embedded"/>
     <fullyQualifiedTypeName name="javax.persistence.ManyToOne"/>
     <fullyQualifiedTypeName name="dominio.Proprietario"/>
+    <fullyQualifiedTypeName name="javax.persistence.Transient"/>
 </qualifiedTypeNameHistroy>

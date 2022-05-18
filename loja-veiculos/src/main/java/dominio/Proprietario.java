@@ -7,11 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 //@Entity
-@Table(name = "proprietario")
+//@Table(name = "proprietario")
 public class Proprietario {
 
 	@Id
@@ -24,19 +23,18 @@ public class Proprietario {
 	@Column(length = 255)
 	private String email;
 	
-	@OneToOne(mappedBy = "proprietario")
-	private Veiculo veiculo;
+	//@OneToOne(mappedBy = "proprietario")
+	//private Veiculo veiculo;
 	
 	public Proprietario() {
 	}
 
-	public Proprietario(Long codigo, String nome, String telefone, String email, Veiculo veiculo) {
+	public Proprietario(Long codigo, String nome, String telefone, String email) {
 		super();
 		this.codigo = codigo;
 		this.nome = nome;
 		this.telefone = telefone;
 		this.email = email;
-		this.veiculo = veiculo;
 	}
 
 	public Long getCodigo() {
@@ -71,17 +69,9 @@ public class Proprietario {
 		this.email = email;
 	}
 
-	public Veiculo getVeiculo() {
-		return veiculo;
-	}
-
-	public void setVeiculo(Veiculo veiculo) {
-		this.veiculo = veiculo;
-	}
-
 	@Override
 	public int hashCode() {
-		return Objects.hash(codigo, email, nome, telefone, veiculo);
+		return Objects.hash(codigo, email, nome, telefone);
 	}
 
 	@Override
@@ -94,8 +84,7 @@ public class Proprietario {
 			return false;
 		Proprietario other = (Proprietario) obj;
 		return Objects.equals(codigo, other.codigo) && Objects.equals(email, other.email)
-				&& Objects.equals(nome, other.nome) && Objects.equals(telefone, other.telefone)
-				&& Objects.equals(veiculo, other.veiculo);
+				&& Objects.equals(nome, other.nome) && Objects.equals(telefone, other.telefone);
 	}
 
 }

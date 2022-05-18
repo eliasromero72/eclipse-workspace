@@ -48,7 +48,7 @@ public class Programa {
 		em.persist(veiculo);
 		*/
 		
-		///*
+		/*
 		// parte iii - Usado data e CLOB
 		StringBuilder especificacoes = new StringBuilder();
 		especificacoes.append("Carro em excelente estado.\n");
@@ -68,13 +68,15 @@ public class Programa {
 		veiculo.setEspecificacoes(especificacoes.toString());
 		
 		em.persist(veiculo);
-		//*/// parte iii continua abaixo
+		*/// parte iii continua abaixo
 
 		/*
 		// parte iv - Objetos embutidos
 		ProprietarioEmbedded proprietario = new ProprietarioEmbedded();
 		proprietario.setNome("João das Couves");
 		proprietario.setTelefone("(34) 1234-5678");
+		proprietario.setEmail("joaodascoves@gmail.com");
+		
 		Veiculo veiculo = new Veiculo();
 		veiculo.setFabricante("VW");
 		veiculo.setModelo("Gol");
@@ -113,14 +115,14 @@ public class Programa {
 		em.getTransaction().commit();
 		//*/
 				
-		///*
+		/*
 		// parte iii - Usado data e CLOB (continuação)
 		em.detach(veiculo);
 		Veiculo veiculo2 = em.find(Veiculo.class, veiculo.getCodigo());
 		System.out.println("Veículo: " + veiculo2.getModelo());
 		System.out.println("-------");
 		System.out.println(veiculo2.getEspecificacoes());
-		//*/		
+		*/		
 
 		System.out.println("pronto!");
 		em.close(); // fechando...

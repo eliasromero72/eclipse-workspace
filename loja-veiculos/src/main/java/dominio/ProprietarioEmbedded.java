@@ -1,5 +1,7 @@
 package dominio;
 
+import java.util.Objects;
+
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
@@ -42,6 +44,24 @@ public class ProprietarioEmbedded {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(email, nome, telefone);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ProprietarioEmbedded other = (ProprietarioEmbedded) obj;
+		return Objects.equals(email, other.email) && Objects.equals(nome, other.nome)
+				&& Objects.equals(telefone, other.telefone);
 	}
 
 }
