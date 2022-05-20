@@ -1,4 +1,4 @@
-package aplicacao;
+ package aplicacao;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -8,6 +8,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import dominio.Proprietario;
+import dominio.ProprietarioEmbedded;
 import dominio.TipoCombustivel;
 import dominio.Veiculo;
 
@@ -90,7 +91,7 @@ public class Programa {
 		em.persist(veiculo);
 		*/
 		
-		/*
+		///*
 		// parte v - @OneToOne
 		Proprietario proprietario = new Proprietario();
 		proprietario.setNome("João das Couves");
@@ -110,7 +111,7 @@ public class Programa {
 		veiculo.setProprietario(proprietario);
 		
 		em.persist(veiculo);
-		*/
+		//*/
 			
 		em.getTransaction().commit();
 		//*/

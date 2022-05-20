@@ -24,15 +24,16 @@ public class ConsultandoVeiculos {
 		List<Veiculo> veiculos = em.createQuery("select v from Veiculo v", Veiculo.class).getResultList();
 		for (Veiculo veiculo : veiculos) {
 			System.out.println(veiculo.getModelo() + " - " + veiculo.getProprietario().getNome());
+
 		}
 		*/
 		
-		// Se consultarmos um veículo pelo identificador, a query inclui um left join ou inner join com a tabela de proprietários, dependendo do que foi definido noatributo optional do mapeamento @OneToOne.
-		//Veiculo veiculo = em.find(Veiculo.class, 1L);
+		// Se consultarmos um veículo pelo identificador, a query inclui um left join ou inner join com a tabela de proprietários, dependendo do que foi definido no atributo optional do mapeamento @OneToOne.
+		//Veiculo veiculo = em.find(Veiculo.class, 2L);
 		//System.out.println(veiculo.getModelo() + " - " + veiculo.getProprietario().getNome());
 		
 		// Agora podemos consultar um proprietário e obter o veículo dele.
-		Proprietario proprietario = em.find(Proprietario.class, 2L);
+		Proprietario proprietario = em.find(Proprietario.class, 3L);
 		System.out.println(proprietario.getVeiculo().getModelo() + " - " + proprietario.getNome());
 		
 		

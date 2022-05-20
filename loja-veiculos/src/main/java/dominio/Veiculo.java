@@ -12,6 +12,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -56,15 +58,15 @@ public class Veiculo {
 	private byte[] foto;
 	*/
 	
-	@Embedded
-	private ProprietarioEmbedded proprietario;
+	//@Embedded
+	//private ProprietarioEmbedded proprietario;
 	
 	///*
 	// O relacionamento one-to-one aceita referências nulas, por padrão. Podemos obrigar a atribuição de proprietário durante a persistência de Veiculo, incluindo o atributo optional com valor false na anotação @OneToOne.
 	//@OneToOne
-	//@OneToOne(optional = false)
-	//@JoinColumn(name = "cod_proprietario")
-	//private Proprietario proprietario;
+	@OneToOne(optional = false)
+	@JoinColumn(name = "cod_proprietario")
+	private Proprietario proprietario;
 	//*/
 	
 	/*
@@ -84,9 +86,8 @@ public class Veiculo {
 	public Veiculo() {
 	}
 
-	public Veiculo(Long codigo, String fabricante, String modelo, Integer anoFabricacao, Integer anoModelo,
-			BigDecimal valor, TipoCombustivel tipoCombustivel, LocalDate dataCadastro,
-			ProprietarioEmbedded proprietario) {
+	public Veiculo (Long codigo, String fabricante, String modelo, Integer anoFabricacao, Integer anoModelo,
+			BigDecimal valor, TipoCombustivel tipoCombustivel, LocalDate dataCadastro, Proprietario proprietario) {
 		super();
 		this.codigo = codigo;
 		this.fabricante = fabricante;
@@ -163,11 +164,11 @@ public class Veiculo {
 		this.dataCadastro = dataCadastro;
 	}
 
-	public ProprietarioEmbedded getProprietario() {
+	public Proprietario getProprietario() {
 		return proprietario;
 	}
 
-	public void setProprietario(ProprietarioEmbedded proprietario) {
+	public void setProprietario(Proprietario proprietario) {
 		this.proprietario = proprietario;
 	}
 
