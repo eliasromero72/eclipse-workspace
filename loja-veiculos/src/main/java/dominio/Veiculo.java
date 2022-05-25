@@ -75,11 +75,11 @@ public class Veiculo {
 	//private Proprietario proprietario;
 	//*/
 	
-	///*
-	//@ManyToOne
-	//@JoinColumn(name = "proprietario_codigo")
-	//private Proprietario proprietario;
-	//*/
+	/*
+	@ManyToOne
+	@JoinColumn(name = "proprietario_codigo")
+	private Proprietario proprietario;
+	*/
 	
 	@ManyToMany
 	///*
@@ -88,7 +88,8 @@ public class Veiculo {
 	joinColumns = @JoinColumn(name = "veiculo_codigo"),
 	inverseJoinColumns = @JoinColumn(name = "acessorio_codigo"))
 	//*/
-	private Set<Acessorio> acessorios = new HashSet<>();
+	// parte i
+	private Set<Acessorio> acessorios = new HashSet<>(); // Definimos aqui um conjunto para que um veículo não tenha um acessório repetido
 
 	/*
 	As propriedades de uma entidade são automaticamente mapeadas se não especificarmos nenhuma anotação.
