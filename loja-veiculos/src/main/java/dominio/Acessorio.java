@@ -1,17 +1,12 @@
 package dominio;
 
-import java.util.HashSet;
-import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -24,17 +19,16 @@ public class Acessorio {
 	@Column(length = 60, nullable = false)
 	private String descricao;
 	
-	@ManyToMany(mappedBy = "acessorio")
-	private Set<Veiculo> veiculos = new HashSet<>();
+	//@ManyToMany(mappedBy = "acessorio")
+	//private Set<Veiculo> veiculos = new HashSet<>();
 	
 	public Acessorio() {
 	}
 
-	public Acessorio(Long codigo, String descricao, Set<Veiculo> veiculos) {
+	public Acessorio(Long codigo, String descricao) {
 		super();
 		this.codigo = codigo;
 		this.descricao = descricao;
-		this.veiculos = veiculos;
 	}
 
 	public Long getCodigo() {
@@ -53,17 +47,9 @@ public class Acessorio {
 		this.descricao = descricao;
 	}
 
-	public Set<Veiculo> getVeiculos() {
-		return veiculos;
-	}
-
-	public void setVeiculos(Set<Veiculo> veiculos) {
-		this.veiculos = veiculos;
-	}
-
 	@Override
 	public int hashCode() {
-		return Objects.hash(codigo, descricao, veiculos);
+		return Objects.hash(codigo, descricao);
 	}
 
 	@Override
@@ -75,8 +61,7 @@ public class Acessorio {
 		if (getClass() != obj.getClass())
 			return false;
 		Acessorio other = (Acessorio) obj;
-		return Objects.equals(codigo, other.codigo) && Objects.equals(descricao, other.descricao)
-				&& Objects.equals(veiculos, other.veiculos);
+		return Objects.equals(codigo, other.codigo) && Objects.equals(descricao, other.descricao);
 	}
 	
 }
