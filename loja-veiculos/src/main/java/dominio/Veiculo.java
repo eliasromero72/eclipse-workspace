@@ -2,7 +2,9 @@ package dominio;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Embedded;
@@ -13,6 +15,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -64,16 +70,25 @@ public class Veiculo {
 	///*
 	// O relacionamento one-to-one aceita referências nulas, por padrão. Podemos obrigar a atribuição de proprietário durante a persistência de Veiculo, incluindo o atributo optional com valor false na anotação @OneToOne.
 	//@OneToOne
-	@OneToOne(optional = false)
-	@JoinColumn(name = "cod_proprietario")
-	private Proprietario proprietario;
+	//@OneToOne(optional = false)
+	//@JoinColumn(name = "cod_proprietario")
+	//private Proprietario proprietario;
 	//*/
 	
-	/*
-	@ManyToOne
-	@JoinColumn(name = "proprietario_codigo")
-	private Proprietario proprietario;
-	*/
+	///*
+	//@ManyToOne
+	//@JoinColumn(name = "proprietario_codigo")
+	//private Proprietario proprietario;
+	//*/
+	
+	@ManyToMany
+	///*
+	// parte ii - @JoinTable
+	@JoinTable(name = "veiculo_acessorio",
+	joinColumns = @JoinColumn(name = "veiculo_codigo"),
+	inverseJoinColumns = @JoinColumn(name = "acessorio_codigo"))
+	//*/
+	private Set<Acessorio> acessorios = new HashSet<>();
 
 	/*
 	As propriedades de uma entidade são automaticamente mapeadas se não especificarmos nenhuma anotação.
@@ -86,8 +101,8 @@ public class Veiculo {
 	public Veiculo() {
 	}
 
-	public Veiculo (Long codigo, String fabricante, String modelo, Integer anoFabricacao, Integer anoModelo,
-			BigDecimal valor, TipoCombustivel tipoCombustivel, LocalDate dataCadastro, Proprietario proprietario) {
+	public Veiculo(Long codigo, String fabricante, String modelo, Integer anoFabricacao, Integer anoModelo,
+			BigDecimal valor, TipoCombustivel tipoCombustivel, LocalDate dataCadastro, Set<Acessorio> acessorios) {
 		super();
 		this.codigo = codigo;
 		this.fabricante = fabricante;
@@ -97,7 +112,7 @@ public class Veiculo {
 		this.valor = valor;
 		this.tipoCombustivel = tipoCombustivel;
 		this.dataCadastro = dataCadastro;
-		this.proprietario = proprietario;
+		this.acessorios = acessorios;
 	}
 
 	public Long getCodigo() {
@@ -164,17 +179,17 @@ public class Veiculo {
 		this.dataCadastro = dataCadastro;
 	}
 
-	public Proprietario getProprietario() {
-		return proprietario;
+	public Set<Acessorio> getAcessorios() {
+		return acessorios;
 	}
 
-	public void setProprietario(Proprietario proprietario) {
-		this.proprietario = proprietario;
+	public void setAcessorios(Set<Acessorio> acessorios) {
+		this.acessorios = acessorios;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(anoFabricacao, anoModelo, codigo, dataCadastro, fabricante, modelo, proprietario,
+		return Objects.hash(acessorios, anoFabricacao, anoModelo, codigo, dataCadastro, fabricante, modelo,
 				tipoCombustivel, valor);
 	}
 
@@ -187,10 +202,10 @@ public class Veiculo {
 		if (getClass() != obj.getClass())
 			return false;
 		Veiculo other = (Veiculo) obj;
-		return Objects.equals(anoFabricacao, other.anoFabricacao) && Objects.equals(anoModelo, other.anoModelo)
-				&& Objects.equals(codigo, other.codigo) && Objects.equals(dataCadastro, other.dataCadastro)
-				&& Objects.equals(fabricante, other.fabricante) && Objects.equals(modelo, other.modelo)
-				&& Objects.equals(proprietario, other.proprietario) && tipoCombustivel == other.tipoCombustivel
+		return Objects.equals(acessorios, other.acessorios) && Objects.equals(anoFabricacao, other.anoFabricacao)
+				&& Objects.equals(anoModelo, other.anoModelo) && Objects.equals(codigo, other.codigo)
+				&& Objects.equals(dataCadastro, other.dataCadastro) && Objects.equals(fabricante, other.fabricante)
+				&& Objects.equals(modelo, other.modelo) && tipoCombustivel == other.tipoCombustivel
 				&& Objects.equals(valor, other.valor);
 	}
 	

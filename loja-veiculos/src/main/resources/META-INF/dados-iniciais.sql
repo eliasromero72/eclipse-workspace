@@ -73,3 +73,25 @@ insert into tab_veiculo (codigo, fabricante, modelo, ano_fabricacao,
 ano_modelo, valor, tipo_combustivel, data_cadastro, cod_proprietario)
 values (3, 'VW', 'Gol', 2019, 2020, 35000, 'BICOMBUSTIVEL', sysdate(), 3);
 commit;
+
+insert into tab_veiculo (codigo, fabricante, modelo,
+ano_fabricacao, ano_modelo, valor, tipo_combustivel,
+data_cadastro, proprietario_codigo) values (3, 'Ford', 'Ka',
+2018, 2019, 27000, 'BICOMBUSTIVEL', sysdate(), 1);
+commit;
+
+insert into acessorio (codigo, descricao) values (1, 'Direção hidráulica');
+insert into acessorio (codigo, descricao) values (2, 'Alarme');
+insert into acessorio (codigo, descricao) values (3, 'Ar condicionado');
+insert into acessorio (codigo, descricao) values (4, 'Bancos de couro');
+commit;
+
+insert into veiculo_acessorio (veiculo_codigo, acessorio_codigo)
+values (1, 1);
+insert into veiculo_acessorio (veiculo_codigo, acessorio_codigo)
+values (1, 2);
+insert into veiculo_acessorio (veiculo_codigo, acessorio_codigo)
+values (1, 3);
+insert into veiculo_acessorio (veiculo_codigo, acessorio_codigo)
+values (1, 4);
+commit;

@@ -5,8 +5,11 @@ import java.time.LocalDate;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Persistence;
 
+import dominio.Acessorio;
 import dominio.Proprietario;
 import dominio.ProprietarioEmbedded;
 import dominio.TipoCombustivel;
@@ -91,7 +94,7 @@ public class Programa {
 		em.persist(veiculo);
 		*/
 		
-		///*
+		/*
 		// parte v - @OneToOne
 		Proprietario proprietario = new Proprietario();
 		proprietario.setNome("João das Couves");
@@ -111,8 +114,91 @@ public class Programa {
 		veiculo.setProprietario(proprietario);
 		
 		em.persist(veiculo);
-		//*/
-			
+		*/
+
+		/*
+		// parte vi - @ManyToOne
+		Proprietario proprietario = new Proprietario();
+		proprietario.setNome("João das Couves");
+		proprietario.setTelefone("(34) 1234-5678");
+		
+		// Basta incluir essa linha abaixo para persistir o proprietário.
+		em.persist(proprietario);
+
+		Veiculo veiculo1 = new Veiculo();
+		veiculo1.setFabricante("GM");
+		veiculo1.setModelo("Celta");
+		veiculo1.setAnoFabricacao(2015);
+		veiculo1.setAnoModelo(2015);
+		veiculo1.setValor(new BigDecimal(11_000));
+		veiculo1.setTipoCombustivel(TipoCombustivel.GASOLINA);
+		veiculo1.setDataCadastro(LocalDate.now());
+		veiculo1.setProprietario(proprietario);
+
+		em.persist(veiculo1);		
+		
+		Veiculo veiculo2 = new Veiculo();
+		veiculo2.setFabricante("VW");
+		veiculo2.setModelo("Gol");
+		veiculo2.setAnoFabricacao(2018);
+		veiculo2.setAnoModelo(2018);
+		veiculo2.setValor(new BigDecimal(17_200));
+		veiculo2.setTipoCombustivel(TipoCombustivel.BICOMBUSTIVEL);
+		veiculo2.setDataCadastro(LocalDate.now());
+		veiculo2.setProprietario(proprietario);
+		
+		em.persist(veiculo2);		
+		*/	
+		
+		///*
+		// parte vii - @ManyToMany
+		
+		// instancia acessórios
+		Acessorio roda = new Acessorio();
+		roda.setDescricao("Rodas de liga leve");
+		Acessorio sensor = new Acessorio();
+		sensor.setDescricao("Sensores de estacionamento");
+		Acessorio mp3 = new Acessorio();
+		mp3.setDescricao("MP3 Player");
+		Acessorio pintura = new Acessorio();
+		pintura.setDescricao("Pintura metalizada");
+		
+		// persiste acessórios
+		em.persist(roda);
+		em.persist(sensor);
+		em.persist(mp3);
+		em.persist(pintura);
+		
+		// instancia veículos
+		Veiculo veiculo1 = new Veiculo();
+		veiculo1.setFabricante("VW");
+		veiculo1.setModelo("Gol");
+		veiculo1.setAnoFabricacao(2018);
+		veiculo1.setAnoModelo(2018);
+		veiculo1.setValor(new BigDecimal(17_200));
+		veiculo1.setTipoCombustivel(TipoCombustivel.BICOMBUSTIVEL);
+		veiculo1.setDataCadastro(LocalDate.now());
+		veiculo1.getAcessorios().add(roda);
+		veiculo1.getAcessorios().add(mp3);
+		
+		Veiculo veiculo2 = new Veiculo();
+		veiculo2.setFabricante("Hyundai");
+		veiculo2.setModelo("i30");
+		veiculo2.setAnoFabricacao(2019);
+		veiculo2.setAnoModelo(2019);
+		veiculo2.setValor(new BigDecimal(53_500));
+		veiculo2.setTipoCombustivel(TipoCombustivel.BICOMBUSTIVEL);
+		veiculo2.setDataCadastro(LocalDate.now());
+		veiculo2.getAcessorios().add(roda);
+		veiculo2.getAcessorios().add(sensor);
+		veiculo2.getAcessorios().add(mp3);
+		veiculo2.getAcessorios().add(pintura);
+		
+		// persiste veículos
+		em.persist(veiculo1);
+		em.persist(veiculo2);	
+		//*/			
+		
 		em.getTransaction().commit();
 		//*/
 				

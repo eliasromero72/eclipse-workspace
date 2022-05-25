@@ -1,5 +1,6 @@
 package dominio;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -7,10 +8,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-@Entity
+//@Entity
 @Table(name = "proprietario")
 public class Proprietario {
 
@@ -24,19 +26,22 @@ public class Proprietario {
 	@Column(length = 255)
 	private String email;
 	
-	@OneToOne(mappedBy = "proprietario")
-	private Veiculo veiculo;
+	//@OneToOne(mappedBy = "proprietario")
+	//private Veiculo veiculo;
+	
+	@OneToMany(mappedBy = "proprietario")
+	private List<Veiculo> veiculos;
 	
 	public Proprietario() {
 	}
 
-	public Proprietario(Long codigo, String nome, String telefone, String email, Veiculo veiculo) {
+	public Proprietario(Long codigo, String nome, String telefone, String email, List<Veiculo> veiculos) {
 		super();
 		this.codigo = codigo;
 		this.nome = nome;
 		this.telefone = telefone;
 		this.email = email;
-		this.veiculo = veiculo;
+		this.veiculos = veiculos;
 	}
 
 	public Long getCodigo() {
@@ -71,17 +76,17 @@ public class Proprietario {
 		this.email = email;
 	}
 
-	public Veiculo getVeiculo() {
-		return veiculo;
+	public List<Veiculo> getVeiculos() {
+		return veiculos;
 	}
 
-	public void setVeiculo(Veiculo veiculo) {
-		this.veiculo = veiculo;
+	public void setVeiculos(List<Veiculo> veiculos) {
+		this.veiculos = veiculos;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(codigo, email, nome, telefone, veiculo);
+		return Objects.hash(codigo, email, nome, telefone, veiculos);
 	}
 
 	@Override
@@ -95,7 +100,7 @@ public class Proprietario {
 		Proprietario other = (Proprietario) obj;
 		return Objects.equals(codigo, other.codigo) && Objects.equals(email, other.email)
 				&& Objects.equals(nome, other.nome) && Objects.equals(telefone, other.telefone)
-				&& Objects.equals(veiculo, other.veiculo);
+				&& Objects.equals(veiculos, other.veiculos);
 	}
 
 }
